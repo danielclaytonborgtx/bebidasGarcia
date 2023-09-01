@@ -1,18 +1,26 @@
 div {
     text-align: center;
-    display: block;
 }
 
 h1 {
-    margin: 30px
+    margin: 50px 10px;
 }
 
 a {
-    text-decoration: none;
     color: black;
     display: block;
     padding: 50px 0;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
     font-size: 20px;
   }
+  
+.button-link {
+    background-color: #E0E0E0;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 30px 10px; /* Adicione margem para espaçamento entre os links */
+  }
+button {
+    padding: 10px 15px;
+    border-radius: 10px;
+}
