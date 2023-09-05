@@ -20,5 +20,6 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     cursor: pointer;
+    font-family: 'Inter', sans-serif;
   }
 `;

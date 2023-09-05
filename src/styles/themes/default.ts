@@ -3,6 +3,8 @@ export const defaultTheme = {
 
   "red-300": "#E94E24",
 
+  "orange-300": "#e44832",
+
   "green-300": "#33CC7A",
 
   "gray-100": "#FFFFFF",

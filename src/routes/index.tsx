@@ -10,8 +10,8 @@ export function Router() {
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/category" element={<Category />} />
-        <Route path="/product" element={<Product />} />
+        <Route path="/categories" element={<Category />} />
+        <Route path="/products" element={<Product />} />
       </Route>
     </Routes>
   );

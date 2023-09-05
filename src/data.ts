@@ -1,123 +1,142 @@
-export const data = [
+export const categories = [
   {
     id: 1,
     name: "Bebidas",
     image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-    subCategory: [
-      {
-        id: 1,
-        name: "Cervejas",
-        image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-        products: [
-          {
-            id: 1,
-            name: "Skol",
-            image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-          },
-          {
-            id: 2,
-            name: "Brahma",
-            image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-          },
-          {
-            id: 3,
-            name: "Antartica",
-            image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-          },
-          {
-            id: 4,
-            name: "Budweiser",
-            image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-          },
-        ],
-      },
-      {
-        id: 4,
-        name: "Refrigerantes",
-        image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-        products: [
-          {
-            id: 1,
-            name: "Coca-Cola",
-            image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-          },
-          {
-            id: 2,
-            name: "Fanta",
-            image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-          },
-          {
-            id: 3,
-            name: "Guaraná",
-            image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-          },
-          {
-            id: 4,
-            name: "Sprite",
-            image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-          },
-        ],
-      },
-      {
-        id: 5,
-        name: "Sucos",
-        image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-        products: [
-          {
-            id: 1,
-            name: "Laranja",
-            image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-          },
-          {
-            id: 2,
-            name: "Uva",
-            image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-          },
-          {
-            id: 3,
-            name: "Limão",
-            image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-          },
-          {
-            id: 4,
-            name: "Maracujá",
-            image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-          },
-        ],
-      },
-    ],
   },
   {
     id: 2,
     name: "Comida",
     image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-    subCategory: [
-      {
-        id: 1,
-        name: "Lanches",
-        image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-        products: [
-          {
-            id: 1,
-            name: "X-Burguer",
-          },
-        ],
-      },
-      {
-        id: 2,
-        name: "Caldos",
-        image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
-        products: [
-          {
-            id: 1,
-            name: "Caldo de Feijão",
-          },
-          {
-            id: 2,
-            name: "Caldo de Mandioca",
-          },
-        ],
-      },
-    ],
+  },
+  {
+    id: 3,
+    name: "Outros",
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+];
+
+export const subCategories = [
+  {
+    id: 1,
+    categoryId: 1,
+    name: "Cervejas",
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+  {
+    id: 2,
+    categoryId: 1,
+    name: "Refrigerantes",
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+  {
+    id: 3,
+    categoryId: 1,
+    name: "Sucos",
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+  {
+    id: 4,
+    categoryId: 2,
+    name: "Lanches",
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+  {
+    id: 5,
+    categoryId: 2,
+    name: "Caldos",
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+];
+
+export const products = [
+  {
+    id: 1,
+    subCategoryId: 1,
+    name: "Skol",
+    price: 7.0,
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+  {
+    id: 2,
+    subCategoryId: 1,
+    name: "Brahma",
+    price: 7.0,
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+  {
+    id: 3,
+    subCategoryId: 2,
+    name: "Coca-Cola",
+    price: 5.0,
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+  {
+    id: 4,
+    subCategoryId: 2,
+    name: "Guaraná",
+    price: 5.0,
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+  {
+    id: 5,
+    subCategoryId: 3,
+    name: "Laranja",
+    price: 5.0,
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+  {
+    id: 6,
+    subCategoryId: 3,
+    name: "Uva",
+    price: 5.0,
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+  {
+    id: 7,
+    subCategoryId: 4,
+    name: "X-Burguer",
+    price: 10.0,
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+  {
+    id: 8,
+    subCategoryId: 4,
+    name: "X-Salada",
+    price: 12.0,
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+  {
+    id: 9,
+    subCategoryId: 5,
+    name: "Caldo de Feijão",
+    price: 10.0,
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+  {
+    id: 10,
+    subCategoryId: 5,
+    name: "Caldo de Mandioca",
+    price: 10.0,
+    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+  },
+];
+
+export const sales = [
+  {
+    id: 1,
+    title: "Promoção de Cervejas",
+    description: "Compre 3 cervejas e ganhe 1",
+    price: 10.0,
+    image:
+      "https://images.unsplash.com/photo-1608270586620-248524c67de9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+  },
+  {
+    id: 2,
+    title: "Promoção de Refrigerantes",
+    description: "Compre 3 refrigerantes e ganhe 1",
+    price: 10.0,
+    image:
+      "https://images.unsplash.com/photo-1527960471264-932f39eb5846?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
   },
 ];
