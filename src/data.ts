@@ -2,17 +2,20 @@ export const categories = [
   {
     id: 1,
     name: "Bebidas",
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://images.unsplash.com/photo-1608270586620-248524c67de9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
   },
   {
     id: 2,
     name: "Comida",
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://media.istockphoto.com/id/1358848345/pt/foto/traditional-fried-coxinha-on-a-black-plate-on-a-slate-background-brazilian-snack.jpg?s=1024x1024&w=is&k=20&c=l_I_HivRKfUXMM3cbSfsskd3FGxXM-Dm9FPCi9tqyCw=",
   },
   {
     id: 3,
     name: "Outros",
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://tiermaker.com/images/templates/tier-list-de-salgadinhos-1381757/13817571638408700.jpeg",
   },
 ];
 
