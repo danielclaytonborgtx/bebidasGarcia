@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { Title } from "../../components/Title";
+import { Text } from "../../components/Text";
 
 import {
   Container,
@@ -15,7 +16,6 @@ import {
 } from "./styles";
 
 import { categories } from "../../data";
-import { Text } from "../../components/Text";
 
 export function Category() {
   const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -41,6 +41,9 @@ export function Category() {
   const handleNavigateToHome = () => {
     navigate("/");
   };
+  const handleNavigateToProducts = () => {
+    navigate("/Products");
+  };
 
   console.log("MAP", map);
   console.log("Filter", filter);
@@ -49,21 +52,17 @@ export function Category() {
   return (
     <Container>
       <LogoContainer />
-      <Title>Categorias</Title>
+
+      <Title>Bebidas Garcia</Title>
+
+      <Text size="lg" weight={700}>
+        Categorias
+      </Text>
 
       <Content>
-        {/* <Link to="/products" className="button-link">
-          Bebidas
-        </Link>
-        <Link to="/products" className="button-link">
-          Salgados
-        </Link>
-        <Link to="/products" className="button-link">
-          Outros
-        </Link> */}
         <CategoriesContainer>
           {categories.map((category) => (
-            <Categorie key={category.id}>
+            <Categorie onClick={handleNavigateToProducts} key={category.id}>
               <CategoryTitle>{category.name}</CategoryTitle>
               <CategoryPhotoContainer>
                 <CategoryPhoto src={category.image} />
