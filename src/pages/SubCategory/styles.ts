@@ -36,7 +36,7 @@ export const ButtonMenu = styled.button`
 
 export const CategoriesContainer = styled.div``;
 
-export const CategoryItem = styled.div`
+export const SubCategoryItem = styled.div`
   width: 100%;
   padding: 1rem 0;
   display: flex;
@@ -50,19 +50,19 @@ export const CategoryItem = styled.div`
   }
 `;
 
-export const CategoryTitle = styled.span`
+export const SubCategoryTitle = styled.span`
   font-weight: bold;
   margin-bottom: 0.25rem;
 `;
 
-export const CategoryPhotoContainer = styled.div`
+export const SubCategoryPhotoContainer = styled.div`
   margin-top: 0.5rem;
   width: 100%;
   height: 10rem;
   background-color: pink;
 `;
 
-export const CategoryPhoto = styled.img`
+export const SubCategoryPhoto = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
