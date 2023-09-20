@@ -23,7 +23,7 @@ export function SubCategory() {
   const categoryId = window.location.search.replace("?categoryId=", "");
 
   const handleNavigateToHome = () => {
-    navigate("/");
+    navigate("/categories");
   };
 
   const handleNavigateToProducts = (categoryId: number) => {
@@ -61,6 +61,7 @@ export function SubCategory() {
               </SubCategoryItem>
             ))}
         </CategoriesContainer>
+
         <ButtonMenu onClick={handleNavigateToHome}>
           <Text size="lg" weight={700} variant="secondary">
             Voltar

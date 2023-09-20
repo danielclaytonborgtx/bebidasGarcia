@@ -1,22 +1,32 @@
 import { useNavigate } from "react-router-dom";
 
+import { products } from "../../data";
+
 import { Text } from "../../components/Text";
 import { Title } from "../../components/Title";
 
-import { products } from "../../data";
-
-import { ButtonMenu } from "../Home/styles";
-import { Container, Content, LogoContainer } from "./styles";
+import {
+  Container,
+  Content,
+  LogoContainer,
+  ProductItem,
+  ProductPhoto,
+  ProductPhotoContainer,
+  ProductTitle,
+  ProductsContainer,
+  ButtonMenu,
+} from "./styles";
 
 export function Product() {
   const navigate = useNavigate();
 
   const categoryId = window.location.search.replace("?categoryId=", "");
 
-  console.log(categoryId);
-
-  const handleNavigateToCategories = () => {
-    navigate("/categories");
+  const handleNavigateToSubCategories = () => {
+    navigate("/sub-categories?categoryId=1");
+  };
+  const handleNavigateToProductDetail = (productId: number) => {
+    navigate(`/product/${productId}`); // Navegue para a página de detalhes do produto
   };
 
   return (
@@ -24,11 +34,29 @@ export function Product() {
       <LogoContainer />
 
       <Title>Bebidas Garcia</Title>
+
       <Text size="lg" weight={700}>
         Produtos
       </Text>
+
       <Content>
-        <ButtonMenu onClick={handleNavigateToCategories}>
+        <ProductsContainer>
+          {products
+            .filter((product) => product.subCategoryId === Number(categoryId))
+            .map((product) => (
+              <ProductItem
+                key={product.id}
+                onClick={() => handleNavigateToProductDetail(product.id)}
+              >
+                <ProductTitle>{product.name}</ProductTitle>
+                <ProductPhotoContainer>
+                  <ProductPhoto src={product.image} />
+                </ProductPhotoContainer>
+              </ProductItem>
+            ))}
+        </ProductsContainer>
+
+        <ButtonMenu onClick={handleNavigateToSubCategories}>
           <Text size="lg" weight={700} variant="secondary">
             Voltar
           </Text>
