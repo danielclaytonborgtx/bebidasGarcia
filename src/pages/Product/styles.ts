@@ -67,3 +67,8 @@ export const ProductPhoto = styled.img`
   height: 100%;
   object-fit: cover;
 `;
+export const ProductPrice = styled.span`
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+`;

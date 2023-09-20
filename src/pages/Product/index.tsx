@@ -15,6 +15,7 @@ import {
   ProductTitle,
   ProductsContainer,
   ButtonMenu,
+  ProductPrice,
 } from "./styles";
 
 export function Product() {
@@ -52,6 +53,12 @@ export function Product() {
                 <ProductPhotoContainer>
                   <ProductPhoto src={product.image} />
                 </ProductPhotoContainer>
+                <ProductPrice>
+                  {new Intl.NumberFormat("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  }).format(product.price)}
+                </ProductPrice>
               </ProductItem>
             ))}
         </ProductsContainer>
