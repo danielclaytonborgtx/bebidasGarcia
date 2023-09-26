@@ -24,10 +24,10 @@ export function Product() {
   const categoryId = window.location.search.replace("?categoryId=", "");
 
   const handleNavigateToSubCategories = () => {
-    navigate("/sub-categories?categoryId=1");
+    navigate(-1);
   };
   const handleNavigateToProductDetail = (productId: number) => {
-    navigate(`/product/${productId}`); // Navegue para a página de detalhes do produto
+    navigate(`/product?productId=${productId}`); // Navegue para a página de detalhes do produto
   };
 
   return (

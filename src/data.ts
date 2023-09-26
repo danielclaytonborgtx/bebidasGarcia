@@ -24,31 +24,36 @@ export const subCategories = [
     id: 1,
     categoryId: 1,
     name: "Cervejas",
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://recursos.clubedomalte.com.br/i/_mainstream/populares_mob_.png",
   },
   {
     id: 2,
     categoryId: 1,
     name: "Refrigerantes",
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://www.imagensempng.com.br/wp-content/uploads/2021/07/Bebida-latinha-Png-800x445.png",
   },
   {
     id: 3,
     categoryId: 1,
     name: "Sucos",
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://embalagemmarca.com.br/wp-content/uploads/2016/05/Maguary.jpg",
   },
   {
     id: 4,
     categoryId: 2,
     name: "Lanches",
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://www.sabornamesa.com.br/media/k2/items/cache/0b2c0f4f7276d5cab9ebf370bc3a4b57_XL.jpg",
   },
   {
     id: 5,
     categoryId: 2,
     name: "Caldos",
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlrqRrrGh_ibl2z11NNBJtlmIJ1B_yZWM-mQ&usqp=CAU",
   },
 ];
 
@@ -58,70 +63,79 @@ export const products = [
     subCategoryId: 1,
     name: "Skol",
     price: 7.0,
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://d2r9epyceweg5n.cloudfront.net/stores/001/043/122/products/cerveja-skol-lata-350-ml1-88e9ddb969ead66b5115676905786743-640-0.jpg",
   },
   {
     id: 2,
     subCategoryId: 1,
     name: "Brahma",
     price: 7.0,
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://images-americanas.b2w.io/produtos/136883834/imagens/cerveja-brahma-chopp-lata-473ml/136883834_1_large.jpg",
   },
   {
     id: 3,
     subCategoryId: 2,
     name: "Coca-Cola",
     price: 5.0,
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://www.imigrantesbebidas.com.br/img/bebida/images/products/full/1984-refrigerante-coca-cola-lata-350ml.jpg?s=ef1f9ccf20330fe8f998c65372625c77",
   },
   {
     id: 4,
     subCategoryId: 2,
     name: "Guaraná",
     price: 5.0,
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://www.imigrantesbebidas.com.br/img/bebida/images/products/full/1935-refrigerante-guarana-antarctica-lata-350ml.jpg?s=68ad7993ce4359e664782d2ab309bfcf",
   },
   {
     id: 5,
     subCategoryId: 3,
     name: "Laranja",
     price: 5.0,
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image: "https://media.soujusto.com.br/products/la2.png",
   },
   {
     id: 6,
     subCategoryId: 3,
     name: "Uva",
     price: 5.0,
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://images.tcdn.com.br/img/img_prod/602464/suco_uva_maguary_200ml_3263_1_bbe3717320ca6e96a042cbb42833b36d.jpg",
   },
   {
     id: 7,
     subCategoryId: 4,
     name: "X-Burguer",
     price: 10.0,
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRIiooXENOh5obj09ZK_csRsH_z81dtbLfkA&usqp=CAU",
   },
   {
     id: 8,
     subCategoryId: 4,
     name: "X-Salada",
     price: 12.0,
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://73c166dfsi.execute-api.us-east-1.amazonaws.com/prod/thumborVerify?h=orig&w=orig&u=https%3A%2F%2Fduisktnou8b89.cloudfront.net%2Fimg%2Fitems%2F606b3a1c505db.png",
   },
   {
     id: 9,
     subCategoryId: 5,
     name: "Caldo de Feijão",
     price: 10.0,
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://i2.wp.com/www.tvcatiafonseca.com.br/wp-content/uploads/2019/02/CALDO-DE-FEIJAO.jpg?fit=679%2C476&ssl=1",
   },
   {
     id: 10,
     subCategoryId: 5,
     name: "Caldo de Mandioca",
     price: 10.0,
-    image: "https://i.ibb.co/0j3qQYR/bebidas.jpg",
+    image:
+      "https://naoca.blog.br/wp-content/uploads/2023/06/Caldo-de-Mandioca.png",
   },
 ];
 
