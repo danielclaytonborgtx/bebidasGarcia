@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { usePrismicDocumentsByType } from "@prismicio/react";
 
 import { Title } from "../../components/Title";
 import { Text } from "../../components/Text";
@@ -18,6 +19,10 @@ import {
 import { categories } from "../../data";
 
 export function Category() {
+  const [document] = usePrismicDocumentsByType("categories");
+
+  console.log("Document", document);
+
   const navigate = useNavigate();
 
   const handleNavigateToHome = () => {
