@@ -16,12 +16,18 @@ import {
   ButtonMenu,
 } from "./styles";
 
-import { categories } from "../../data";
-
 export function Category() {
   const [document] = usePrismicDocumentsByType("categories");
 
-  console.log("Document", document);
+  console.log("Document", document?.results);
+
+  const categories = document?.results.map((result) => {
+    return {
+      id: result.uid,
+      name: result.data.name,
+      image: result.data.image.url,
+    };
+  });
 
   const navigate = useNavigate();
 
@@ -29,7 +35,9 @@ export function Category() {
     navigate("/");
   };
 
-  const handleNavigateToProducts = (categoryId: number) => {
+  const handleNavigateToProducts = (categoryId: string | null) => {
+    if (!categoryId) return;
+
     navigate(`/sub-categories?categoryId=${categoryId}`);
   };
 
@@ -45,17 +53,18 @@ export function Category() {
 
       <Content>
         <CategoriesContainer>
-          {categories.map((category) => (
-            <CategoryItem
-              key={category.id}
-              onClick={() => handleNavigateToProducts(category.id)}
-            >
-              <CategoryTitle>{category.name}</CategoryTitle>
-              <CategoryPhotoContainer>
-                <CategoryPhoto src={category.image} />
-              </CategoryPhotoContainer>
-            </CategoryItem>
-          ))}
+          {categories &&
+            categories.map((category) => (
+              <CategoryItem
+                key={category.id}
+                onClick={() => handleNavigateToProducts(category.id)}
+              >
+                <CategoryTitle>{category.name}</CategoryTitle>
+                <CategoryPhotoContainer>
+                  <CategoryPhoto src={category.image} />
+                </CategoryPhotoContainer>
+              </CategoryItem>
+            ))}
         </CategoriesContainer>
         <ButtonMenu onClick={handleNavigateToHome}>
           <Text size="lg" weight={700} variant="secondary">

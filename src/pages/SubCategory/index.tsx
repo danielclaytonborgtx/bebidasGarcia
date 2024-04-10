@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
-import { subCategories, categories } from "../../data";
+import { usePrismicDocumentsByType } from "@prismicio/react";
 
 import { Title } from "../../components/Title";
 import { Text } from "../../components/Text";
@@ -22,11 +21,35 @@ export function SubCategory() {
 
   const categoryId = window.location.search.replace("?categoryId=", "");
 
+  const [document] = usePrismicDocumentsByType("sub_category");
+  const [documentCategory] = usePrismicDocumentsByType("categories");
+
+  console.log("Document", document);
+
+  const subCategories = document?.results
+    .filter((result) => result.data.categoryid === categoryId)
+    .map((result) => {
+      return {
+        id: result.uid,
+        categoryId: result.data.categoryid,
+        name: result.data.name,
+        image: result.data.image.url,
+      };
+    });
+
+  console.log("SubCategories", subCategories);
+
+  const categoryName = documentCategory?.results.find(
+    (result) => result.uid === categoryId,
+  )?.data.name;
+
   const handleNavigateToHome = () => {
     navigate("/categories");
   };
 
-  const handleNavigateToProducts = (categoryId: number) => {
+  const handleNavigateToProducts = (categoryId: string | null) => {
+    if (!categoryId) return;
+
     navigate(`/products?categoryId=${categoryId}`);
   };
 
@@ -37,19 +60,13 @@ export function SubCategory() {
       <Title>Bebidas Garcia</Title>
 
       <Text size="lg" weight={700}>
-        {
-          categories.find((category) => category.id === Number(categoryId))
-            ?.name
-        }
+        {categoryName}
       </Text>
 
       <Content>
         <CategoriesContainer>
-          {subCategories
-            .filter(
-              (subCategory) => subCategory.categoryId === Number(categoryId),
-            )
-            .map((subCategory) => (
+          {subCategories &&
+            subCategories.map((subCategory) => (
               <SubCategoryItem
                 key={subCategory.id}
                 onClick={() => handleNavigateToProducts(subCategory.id)}
