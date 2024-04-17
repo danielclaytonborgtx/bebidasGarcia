@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router-dom";
-
-import { products } from "../../data";
+import { useNavigate, useParams } from "react-router-dom";
+import { usePrismicDocumentsByType } from "@prismicio/react";
 
 import { Text } from "../../components/Text";
 import { Title } from "../../components/Title";
@@ -20,15 +19,26 @@ import {
 
 export function Product() {
   const navigate = useNavigate();
+  const { categoryId } = useParams();
 
-  const categoryId = window.location.search.replace("?categoryId=", "");
+  const [productDocuments] = usePrismicDocumentsByType("product");
 
   const handleNavigateToSubCategories = () => {
-    navigate(-1);
+    navigate("/categories");
   };
-  const handleNavigateToProductDetail = (productId: number) => {
-    navigate(`/product?productId=${productId}`); // Navegue para a página de detalhes do produto
+
+  const handleNavigateToProductDetail = (productId) => {
+    navigate(`/product?productId=${productId}`);
   };
+
+  const products = productDocuments?.results
+    ?.filter((result) => result.data.subCategoryId === categoryId)
+    .map((result) => ({
+      id: result.uid,
+      name: result.data.name[0]?.text || "", // Acessando o texto do campo 'name'
+      image: result.data.image.url,
+      price: parseFloat(result.data.price) || 0,
+    }));
 
   return (
     <Container>
@@ -42,25 +52,23 @@ export function Product() {
 
       <Content>
         <ProductsContainer>
-          {products
-            .filter((product) => product.subCategoryId === Number(categoryId))
-            .map((product) => (
-              <ProductItem
-                key={product.id}
-                onClick={() => handleNavigateToProductDetail(product.id)}
-              >
-                <ProductTitle>{product.name}</ProductTitle>
-                <ProductPhotoContainer>
-                  <ProductPhoto src={product.image} />
-                </ProductPhotoContainer>
-                <ProductPrice>
-                  {new Intl.NumberFormat("pt-br", {
-                    style: "currency",
-                    currency: "BRL",
-                  }).format(product.price)}
-                </ProductPrice>
-              </ProductItem>
-            ))}
+          {products?.map((product) => (
+            <ProductItem
+              key={product.id}
+              onClick={() => handleNavigateToProductDetail(product.id)}
+            >
+              <ProductTitle>{product.name}</ProductTitle>
+              <ProductPhotoContainer>
+                <ProductPhoto src={product.image} />
+              </ProductPhotoContainer>
+              <ProductPrice>
+                {new Intl.NumberFormat("pt-br", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(product.price)}
+              </ProductPrice>
+            </ProductItem>
+          ))}
         </ProductsContainer>
 
         <ButtonMenu onClick={handleNavigateToSubCategories}>
