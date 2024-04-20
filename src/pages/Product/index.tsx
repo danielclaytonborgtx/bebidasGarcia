@@ -55,7 +55,7 @@ export function Product() {
           {products?.map((product) => (
             <ProductItem
               key={product.id}
-              onClick={() => handleNavigateToProductDetail(product.id)}
+              // onClick={() => handleNavigateToProductDetail(product.id)}
             >
               <ProductTitle>{product.name}</ProductTitle>
               <ProductPhotoContainer>
