@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { products } from "../../data";
-import { useMemo } from "react";
+import { usePrismicDocumentsByType } from "@prismicio/react";
 
 import { Text } from "../../components/Text";
 import { Title } from "../../components/Title";
@@ -20,57 +19,62 @@ import {
 
 export function ProductDetail() {
   const navigate = useNavigate();
+
   const productId = window.location.search.replace("?productId=", "");
-  console.log(productId);
+  const [productDocuments] = usePrismicDocumentsByType("product");
+
+  console.log("Product Documents:", productDocuments);
 
   const handleGoBack = () => {
     navigate(-1);
   };
 
-  const product = useMemo(() => {
-    const findProduct = products.find(
-      (productItem) => productItem.id === Number(productId),
-    );
-    if (findProduct) {
-      return findProduct;
-    }
-    return undefined;
-  }, [productId]);
+  const product = productDocuments?.results?.find(
+    (result) => result.uid === productId,
+  );
+
+  console.log("Product:", product);
+  console.log("Product Data:", product?.data);
 
   return (
     <Container>
       <LogoContainer />
 
       <Title>Bebidas Garcia</Title>
-      {product && (
-        <Text size="lg" weight={700}>
-          {product.name}
-        </Text>
-      )}
-      {product && (
-        <Content>
-          <ProductDetailsContainer>
-            <ProductDetailItem key={product.id}>
-              <ProductDetailTitle>{product.name}</ProductDetailTitle>
-              <ProductDetailPhotoContainer>
-                <ProductDetailPhoto src={product.image} alt={product.name} />
-              </ProductDetailPhotoContainer>
-              <ProductDetailPrice>
-                {new Intl.NumberFormat("pt-br", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(product.price)}
-              </ProductDetailPrice>
-            </ProductDetailItem>
-          </ProductDetailsContainer>
 
-          <ButtonMenu onClick={handleGoBack}>
-            <Text size="lg" weight={700} variant="secondary">
-              Voltar
-            </Text>
-          </ButtonMenu>
-        </Content>
-      )}
+      <Content>
+        <ProductDetailsContainer>
+          <ProductDetailItem>
+            <ProductDetailTitle>
+              {product?.data?.name
+                ? product.data.name[0]?.text || ""
+                : "Nome do Produto"}
+            </ProductDetailTitle>
+            <ProductDetailPhotoContainer>
+              <ProductDetailPhoto
+                src={product?.data?.image?.url || ""}
+                alt={
+                  product?.data?.name
+                    ? product.data.name[0]?.text || "Nome do Produto"
+                    : "Nome do Produto"
+                }
+              />
+            </ProductDetailPhotoContainer>
+            <ProductDetailPrice>
+              {new Intl.NumberFormat("pt-br", {
+                style: "currency",
+                currency: "BRL",
+              }).format(product?.data?.value || 0)}
+            </ProductDetailPrice>
+          </ProductDetailItem>
+        </ProductDetailsContainer>
+
+        <ButtonMenu onClick={handleGoBack}>
+          <Text size="lg" weight={700} variant="secondary">
+            Voltar
+          </Text>
+        </ButtonMenu>
+      </Content>
     </Container>
   );
 }

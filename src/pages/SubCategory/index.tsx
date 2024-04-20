@@ -47,10 +47,10 @@ export function SubCategory() {
     navigate("/categories");
   };
 
-  const handleNavigateToProducts = (categoryId: string | null) => {
-    if (!categoryId) return;
+  const handleNavigateToProducts = (subCategoryId: string | null) => {
+    if (!subCategoryId) return;
 
-    navigate(`/products?categoryId=${categoryId}`);
+    navigate(`/products?subCategoryId=${subCategoryId}`);
   };
 
   return (

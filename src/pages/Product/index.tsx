@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { usePrismicDocumentsByType } from "@prismicio/react";
 
 import { Text } from "../../components/Text";
@@ -19,12 +19,12 @@ import {
 
 export function Product() {
   const navigate = useNavigate();
-  const { categoryId } = useParams();
 
+  const subCategoryId = window.location.search.replace("?subCategoryId=", "");
   const [productDocuments] = usePrismicDocumentsByType("product");
-
-  const handleNavigateToSubCategories = () => {
-    navigate("/categories");
+  console.log(productDocuments);
+  const handleGoBack = () => {
+    navigate(-1);
   };
 
   const handleNavigateToProductDetail = (productId) => {
@@ -32,12 +32,12 @@ export function Product() {
   };
 
   const products = productDocuments?.results
-    ?.filter((result) => result.data.subCategoryId === categoryId)
+    ?.filter((result) => result.data.subcategoryid === subCategoryId)
     .map((result) => ({
       id: result.uid,
-      name: result.data.name[0]?.text || "", // Acessando o texto do campo 'name'
+      name: result.data.name, // Acessando o texto do campo 'name'
       image: result.data.image.url,
-      price: parseFloat(result.data.price) || 0,
+      price: result.data.value,
     }));
 
   return (
@@ -61,17 +61,12 @@ export function Product() {
               <ProductPhotoContainer>
                 <ProductPhoto src={product.image} />
               </ProductPhotoContainer>
-              <ProductPrice>
-                {new Intl.NumberFormat("pt-br", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(product.price)}
-              </ProductPrice>
+              <ProductPrice>{product.price}</ProductPrice>
             </ProductItem>
           ))}
         </ProductsContainer>
 
-        <ButtonMenu onClick={handleNavigateToSubCategories}>
+        <ButtonMenu onClick={handleGoBack}>
           <Text size="lg" weight={700} variant="secondary">
             Voltar
           </Text>
