@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
-import { products } from "../../data";
+import { usePrismicDocumentsByType } from "@prismicio/react";
 
 import { Text } from "../../components/Text";
 import { Title } from "../../components/Title";
@@ -21,14 +20,25 @@ import {
 export function Product() {
   const navigate = useNavigate();
 
-  const categoryId = window.location.search.replace("?categoryId=", "");
-
-  const handleNavigateToSubCategories = () => {
+  const subCategoryId = window.location.search.replace("?subCategoryId=", "");
+  const [productDocuments] = usePrismicDocumentsByType("product");
+  console.log(productDocuments);
+  const handleGoBack = () => {
     navigate(-1);
   };
-  const handleNavigateToProductDetail = (productId: number) => {
-    navigate(`/product?productId=${productId}`); // Navegue para a página de detalhes do produto
+
+  const handleNavigateToProductDetail = (productId) => {
+    navigate(`/product?productId=${productId}`);
   };
+
+  const products = productDocuments?.results
+    ?.filter((result) => result.data.subcategoryid === subCategoryId)
+    .map((result) => ({
+      id: result.uid,
+      name: result.data.name, // Acessando o texto do campo 'name'
+      image: result.data.image.url,
+      price: result.data.value,
+    }));
 
   return (
     <Container>
@@ -42,28 +52,21 @@ export function Product() {
 
       <Content>
         <ProductsContainer>
-          {products
-            .filter((product) => product.subCategoryId === Number(categoryId))
-            .map((product) => (
-              <ProductItem
-                key={product.id}
-                onClick={() => handleNavigateToProductDetail(product.id)}
-              >
-                <ProductTitle>{product.name}</ProductTitle>
-                <ProductPhotoContainer>
-                  <ProductPhoto src={product.image} />
-                </ProductPhotoContainer>
-                <ProductPrice>
-                  {new Intl.NumberFormat("pt-br", {
-                    style: "currency",
-                    currency: "BRL",
-                  }).format(product.price)}
-                </ProductPrice>
-              </ProductItem>
-            ))}
+          {products?.map((product) => (
+            <ProductItem
+              key={product.id}
+              // onClick={() => handleNavigateToProductDetail(product.id)}
+            >
+              <ProductTitle>{product.name}</ProductTitle>
+              <ProductPhotoContainer>
+                <ProductPhoto src={product.image} />
+              </ProductPhotoContainer>
+              <ProductPrice>{product.price}</ProductPrice>
+            </ProductItem>
+          ))}
         </ProductsContainer>
 
-        <ButtonMenu onClick={handleNavigateToSubCategories}>
+        <ButtonMenu onClick={handleGoBack}>
           <Text size="lg" weight={700} variant="secondary">
             Voltar
           </Text>
