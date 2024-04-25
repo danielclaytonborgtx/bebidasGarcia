@@ -46,25 +46,25 @@ export function ProductDetail() {
         <ProductDetailsContainer>
           <ProductDetailItem>
             <ProductDetailTitle>
-              {product?.data?.name
-                ? product.data.name[0]?.text || ""
-                : "Nome do Produto"}
+              {product?.data?.name || "Nome do Produto"}
             </ProductDetailTitle>
             <ProductDetailPhotoContainer>
               <ProductDetailPhoto
                 src={product?.data?.image?.url || ""}
-                alt={
-                  product?.data?.name
-                    ? product.data.name[0]?.text || "Nome do Produto"
-                    : "Nome do Produto"
-                }
+                alt={product?.data?.name || "Nome do Produto"}
               />
             </ProductDetailPhotoContainer>
             <ProductDetailPrice>
-              {new Intl.NumberFormat("pt-br", {
-                style: "currency",
-                currency: "BRL",
-              }).format(product?.data?.value || 0)}
+              {product?.data?.value
+                ? new Intl.NumberFormat("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  }).format(
+                    parseFloat(
+                      product.data.value.replace("R$ ", "").replace(",", "."),
+                    ),
+                  )
+                : "Valor do Produto"}
             </ProductDetailPrice>
           </ProductDetailItem>
         </ProductDetailsContainer>
