@@ -27,7 +27,8 @@ export function Product() {
     navigate(-1);
   };
 
-  const handleNavigateToProductDetail = (productId) => {
+  const handleNavigateToProductDetail = (productId: string) => {
+    // Corrigido: especificado o tipo do parâmetro productId como string
     navigate(`/product?productId=${productId}`);
   };
 
