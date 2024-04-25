@@ -41,7 +41,7 @@ export function Home() {
           </Text>
         </ButtonMenu>
 
-        {/* <SalesContainer>
+        <SalesContainer>
           {sales.map((sale) => (
             <Sale key={sale.id}>
               <SaleTitle>{sale.title}</SaleTitle>
@@ -57,7 +57,7 @@ export function Home() {
               </SalePrice>
             </Sale>
           ))}
-        </SalesContainer> */}
+        </SalesContainer>
       </Content>
     </Container>
   );
