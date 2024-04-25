@@ -23,20 +23,23 @@ export function Product() {
   const subCategoryId = window.location.search.replace("?subCategoryId=", "");
   const [productDocuments] = usePrismicDocumentsByType("product");
   console.log(productDocuments);
+
   const handleGoBack = () => {
     navigate(-1);
   };
 
   const handleNavigateToProductDetail = (productId: string) => {
-    // Corrigido: especificado o tipo do parâmetro productId como string
-    navigate(`/product?productId=${productId}`);
+    // Adicionado tipo string para productId
+    if (productId && typeof productId === "string") {
+      navigate(`/product?productId=${productId}`);
+    }
   };
 
   const products = productDocuments?.results
     ?.filter((result) => result.data.subcategoryid === subCategoryId)
     .map((result) => ({
       id: result.uid,
-      name: result.data.name, // Acessando o texto do campo 'name'
+      name: result.data.name,
       image: result.data.image.url,
       price: result.data.value,
     }));
@@ -56,7 +59,7 @@ export function Product() {
           {products?.map((product) => (
             <ProductItem
               key={product.id}
-              onClick={() => handleNavigateToProductDetail(product.id)}
+              onClick={() => handleNavigateToProductDetail(String(product.id))} // Convertendo para string
             >
               <ProductTitle>{product.name}</ProductTitle>
               <ProductPhotoContainer>
