@@ -8,16 +8,16 @@ import {
   Container,
   Content,
   LogoContainer,
-  Sale,
-  SaleDescription,
-  SalePhoto,
-  SalePhotoContainer,
-  SalePrice,
-  SaleTitle,
-  SalesContainer,
+  // Sale,
+  // SaleDescription,
+  // SalePhoto,
+  // SalePhotoContainer,
+  // SalePrice,
+  // SaleTitle,
+  // SalesContainer,
 } from "./styles";
 
-import { sales } from "../../data";
+// import { sales } from "../../data";
 
 export function Home() {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ export function Home() {
           </Text>
         </ButtonMenu>
 
-        <SalesContainer>
+        {/* <SalesContainer>
           {sales.map((sale) => (
             <Sale key={sale.id}>
               <SaleTitle>{sale.title}</SaleTitle>
@@ -57,7 +57,7 @@ export function Home() {
               </SalePrice>
             </Sale>
           ))}
-        </SalesContainer>
+        </SalesContainer> */}
       </Content>
     </Container>
   );
